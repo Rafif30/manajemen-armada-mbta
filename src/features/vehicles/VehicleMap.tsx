@@ -1,16 +1,5 @@
 import { useEffect } from 'react'
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
-import { Icon } from 'leaflet'
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
-
-// Perbaikan URL ikon marker bawaan Leaflet pada bundler Vite (R-5).
-Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-})
 
 interface VehicleMapProps {
   latitude: number
@@ -18,7 +7,6 @@ interface VehicleMapProps {
   label: string
 }
 
-/** Pastikan ukuran peta dihitung ulang setelah modal selesai tampil (tile tidak terpotong). */
 function InvalidateSizeOnMount() {
   const map = useMap()
   useEffect(() => {
